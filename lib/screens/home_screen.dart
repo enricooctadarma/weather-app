@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     _titleController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 8),
-    )..repeat();
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
   }
 
   @override
@@ -245,31 +245,19 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     },
   );
 
-  Widget _movingTitle(double boxWidth) {
-    const text = 'WEATHER APP BY ENRICO';
-    const textStyle = TextStyle(
-      color: Colors.white,
-      fontSize: 34,
-      fontWeight: FontWeight.bold,
-    );
-
-    final animation = Tween<Offset>(
-      begin: const Offset(-1.5, 0),
-      end: const Offset(1.5, 0),
-    ).animate(CurvedAnimation(parent: _titleController, curve: Curves.linear));
-
-    return ClipRect(
-      child: SizedBox(
-        width: boxWidth,
-        height: 48,
-        child: RepaintBoundary(
-          child: SlideTransition(
-            position: animation,
-            child: const Align(
-              alignment: Alignment.centerLeft,
-              child: Text(text, style: textStyle),
-            ),
-          ),
+  Widget _pulseTitle() {
+    return ScaleTransition(
+      scale: Tween(begin: 0.95, end: 1.05).animate(
+        CurvedAnimation(parent: _titleController, curve: Curves.easeInOut),
+      ),
+      child: const Text(
+        'WEATHER APP BY ENRICO',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 34,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.2,
         ),
       ),
     );
@@ -300,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           final width = min(560.0, constraints.maxWidth * 0.9);
                           return Column(
                             children: [
-                              _movingTitle(width),
+                              _pulseTitle(),
                               const SizedBox(height: 10),
                               MouseRegion(
                                 onEnter: (_) =>
