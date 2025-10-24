@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     _titleController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 10),
-    )..repeat();
+    )..repeat(reverse: false);
   }
 
   @override
@@ -245,7 +245,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     },
   );
 
-  // Moving title inside a bounded box
   Widget _movingTitle(double boxWidth) {
     const text = 'WEATHER APP BY ENRICO';
     const textStyle = TextStyle(
@@ -254,32 +253,21 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       fontWeight: FontWeight.bold,
     );
 
-    final tp = TextPainter(
-      text: const TextSpan(text: text, style: textStyle),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    final textWidth = tp.width;
-    final start = -textWidth;
-    final end = boxWidth;
-    final dx = lerpDouble(start, end, _titleController.value) ?? 0.0;
-
     return ClipRect(
       child: SizedBox(
         width: boxWidth,
         height: 48,
-        child: Stack(
-          children: [
-            Positioned(
-              left: dx,
-              top: 0,
-              bottom: 0,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(text, style: textStyle),
-              ),
-            ),
-          ],
+        child: AnimatedBuilder(
+          animation: _titleController,
+          builder: (context, child) {
+            // Gunakan posisi transform, bukan rebuild teks
+            final dx = lerpDouble(-boxWidth, boxWidth, _titleController.value)!;
+            return Transform.translate(offset: Offset(dx, 0), child: child);
+          },
+          child: const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(text, style: textStyle),
+          ),
         ),
       ),
     );
