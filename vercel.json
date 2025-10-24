@@ -1,9 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "build/web/**", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/build/web/$1" }
-  ]
+  "buildCommand": "curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.3-stable.tar.xz && tar xf flutter.tar.xz && ./flutter/bin/flutter build web --release",
+  "installCommand": "./flutter/bin/flutter pub get",
+  "outputDirectory": "build/web",
+  "framework": null
 }
