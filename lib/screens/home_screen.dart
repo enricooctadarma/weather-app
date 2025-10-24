@@ -44,8 +44,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
     _titleController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 10),
-    )..repeat(reverse: false);
+      duration: const Duration(seconds: 8),
+    )..repeat();
   }
 
   @override
@@ -253,20 +253,22 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       fontWeight: FontWeight.bold,
     );
 
+    final animation = Tween<Offset>(
+      begin: const Offset(-1.5, 0),
+      end: const Offset(1.5, 0),
+    ).animate(CurvedAnimation(parent: _titleController, curve: Curves.linear));
+
     return ClipRect(
       child: SizedBox(
         width: boxWidth,
         height: 48,
-        child: AnimatedBuilder(
-          animation: _titleController,
-          builder: (context, child) {
-            // Gunakan posisi transform, bukan rebuild teks
-            final dx = lerpDouble(-boxWidth, boxWidth, _titleController.value)!;
-            return Transform.translate(offset: Offset(dx, 0), child: child);
-          },
-          child: const Align(
-            alignment: Alignment.centerLeft,
-            child: Text(text, style: textStyle),
+        child: RepaintBoundary(
+          child: SlideTransition(
+            position: animation,
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(text, style: textStyle),
+            ),
           ),
         ),
       ),
