@@ -1,0 +1,48 @@
+name: weather_app
+description: "A Flutter project to display weather data."
+
+# Jangan publish ke pub.dev
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.9.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+
+  # HTTP request
+  http: ^0.13.6
+
+  # Load environment variables (API key)
+  flutter_dotenv: ^5.0.2
+
+  # Buka link eksternal
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+  # Tambahkan untuk generate icon otomatis
+  flutter_launcher_icons: ^0.14.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/.env
+    - assets/icons/weather-app.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/weather-app.png"
+  adaptive_icon_background: "#FF00FF"
+  adaptive_icon_foreground: "assets/icons/weather-app.png"
