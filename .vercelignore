@@ -1,0 +1,16 @@
+# Ignore source and Flutter SDK files
+.dart_tool
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+pubspec.lock
+lib/
+ios/
+android/
+test/
+windows/
+macos/
+linux/
+assets/
+build/
+!build/web/
