@@ -1,7 +1,15 @@
 {
   "version": 2,
-  "buildCommand": "curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.3-stable.tar.xz && tar xf flutter.tar.xz && ./flutter/bin/flutter build web --release",
-  "installCommand": "./flutter/bin/flutter pub get",
+  "builds": [
+    {
+      "src": "build/web/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "buildCommand": "curl -o flutter.tar.xz https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.3-stable.tar.xz && tar xf flutter.tar.xz && ./flutter/bin/flutter pub get && ./flutter/bin/flutter build web --release",
   "outputDirectory": "build/web",
-  "framework": null
+  "framework": null,
+  "routes": [
+    { "src": "/(.*)", "dest": "/build/web/$1" }
+  ]
 }
