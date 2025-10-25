@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- App Description -->
+  <meta name="description" content="Weather App by Enrico - Real-time weather updates for any city worldwide." />
+  <meta name="theme-color" content="#a100ff" />
+
+  <!-- Base URL (auto replaced by Flutter build) -->
+  <base href="/" />
+
+  <!-- iOS & Android Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Weather App" />
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/Icon-512.png" />
+  <link rel="icon" type="image/png" href="assets/icons/weather-app.png" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Title -->
+  <title>WEATHER APP BY ENRICO</title>
+
+  <!-- Web App Performance & GPU Boost -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff66cc, #8b00ff);
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Boost GPU compositing for smooth Flutter animations */
+    canvas, #flt-glass-pane {
+      will-change: transform;
+    }
+
+    /* Splash Screen Style (before Flutter loads) */
+    #splash {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #d633ff, #5b00cc);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { opacity: 0.9; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Optional Splash Screen -->
+  <div id="splash">Loading Weather App...</div>
+
+  <!-- Flutter app loader -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    // Remove splash after Flutter loads
+    window.addEventListener('flutter-first-frame', function() {
+      const splash = document.getElementById('splash');
+      if (splash) splash.remove();
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- App Description -->
+  <meta name="description" content="Weather App by Enrico - Real-time weather updates for any city worldwide." />
+  <meta name="theme-color" content="#a100ff" />
+
+  <!-- Base URL (auto replaced by Flutter build) -->
+  <base href="/" />
+
+  <!-- iOS & Android Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Weather App" />
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/Icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/Icon-512.png" />
+  <link rel="icon" type="image/png" href="assets/icons/weather-app.png" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Title -->
+  <title>WEATHER APP BY ENRICO</title>
+
+  <!-- Web App Performance & GPU Boost -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff66cc, #8b00ff);
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Boost GPU compositing for smooth Flutter animations */
+    canvas, #flt-glass-pane {
+      will-change: transform;
+    }
+
+    /* Splash Screen Style (before Flutter loads) */
+    #splash {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #d633ff, #5b00cc);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { opacity: 0.9; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Optional Splash Screen -->
+  <div id="splash">Loading Weather App...</div>
+
+  <!-- Flutter app loader -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <script>
+    // Remove splash after Flutter loads
+    window.addEventListener('flutter-first-frame', function() {
+      const splash = document.getElementById('splash');
+      if (splash) splash.remove();
+    });
+  </script>
+</body>
+</html>
